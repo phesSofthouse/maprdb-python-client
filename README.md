@@ -1,18 +1,13 @@
 ## The Python OJAI Client for MapR-DB
 
-A simple, lightweight library that provides access to MapR-DB.
-The client library supports all existing OJAI functionality and is absolutely compatible with Java OJAI connector,
-that runs under the MapR Data Access Gateway.
 
-The MapR official documentation [link](https://mapr.com/docs/62/MapR-DB/JSON_DB/UsingPythonOJAIClient.html).
+1. Use python 3.11
+2. Create a new virtual env
+3. `pip install -r build_req.txt`
+4. `python -m grpc_tools.protoc -Imapr/ojai/proto --python_out=mapr/ojai/proto/gen/ --grpc_python_out=mapr/ojai/proto/gen/ mapr/ojai/proto/maprdb-server.proto`
+5. Change `import maprdb_server_pb2 as maprdb__server__pb2` to `import mapr.ojai.proto.gen.maprdb_server_pb2 as maprdb__server__pb2` in `maprdb_server_pb2_grpc.py` 
+6. `python setup.py bdist_wheel`
 
-To install the client library into your application, you need to follow these [install instructions](https://github.com/mapr/maprdb-python-client/blob/master/install_client.md).
+The dependencies are locked to match the apache airflow constraint file here: https://raw.githubusercontent.com/apache/airflow/constraints-2.10.0/constraints-3.11.txt
 
-
-To build the library manually, follow these build [instructions](https://github.com/mapr/maprdb-python-client/blob/master/build_readme.md).
-
-
-To use the client library, see the examples [here](https://github.com/mapr-demos/ojai-examples/tree/master/python).
-
-
-To create a connection, see the connection string examples [here](https://github.com/mapr/maprdb-python-client/tree/master/docs/connection_instruction.md).
+If for example a new protobuf version is wanted, update `build_req.txt` and do the above again.
