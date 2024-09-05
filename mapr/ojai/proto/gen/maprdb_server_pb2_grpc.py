@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import maprdb_server_pb2 as maprdb__server__pb2
+import mapr.ojai.proto.gen.maprdb_server_pb2 as maprdb__server__pb2
 
 GRPC_GENERATED_VERSION = '1.66.1'
 GRPC_VERSION = grpc.__version__
